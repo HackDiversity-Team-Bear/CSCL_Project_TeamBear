@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchSingleItem, updateSingleItem } from '../actions';
-import { shared } from '../constants';
+//import { shared } from '../constants';
 
 import styled from 'styled-components';
 
@@ -30,21 +29,21 @@ const InputText = styled.input.attrs({
     text-align: center;
 `;
 
-const Fieldset = styled.fieldset.attrs({
-    className: 'form-control',
-})`
-    border-color: transparent;
-    margin: 1em auto 0.5em;
-    max-width: 50%;
-    min-height: 6em;
-`;
+// const Fieldset = styled.fieldset.attrs({
+//     className: 'form-control',
+// })`
+//     border-color: transparent;
+//     margin: 1em auto 0.5em;
+//     max-width: 50%;
+//     min-height: 6em;
+// `;
 
-const DayInput = styled.input.attrs({
-    className: '',
-})`
-    margin: 5px auto;
-    text-align: center;
-`;
+// const DayInput = styled.input.attrs({
+//     className: '',
+// })`
+//     margin: 5px auto;
+//     text-align: center;
+// `;
 
 const Button = styled.button.attrs({
     className: 'btn btn-primary',
@@ -70,11 +69,16 @@ class ItemUpdate extends Component {
         super(props);
         this.state = {
             _id: '',
-            name: '',
-            daysOfWeek: {},
-            timeframeNote: '',
-            priority: 0,
-            content: '',
+            isbn: '',
+            title: '',
+            author: '',
+            publication_year: '',
+            publisher: '',
+            image_url_s: '',
+            image_url_m: '',
+            image_url_l: '',
+            copies: '',
+            available: '',
         };
     }
 
@@ -86,53 +90,72 @@ class ItemUpdate extends Component {
             });
     }
 
-    handleChangeInputName = async event => {
-        const name = event.target.value;
-        this.setState({ name });
+    handleChangeInputIsbn = async event => {
+        const isbn = event.target.value;
+        this.setState({ isbn });
     }
 
-    handleChangeDays = async event => {
-        const { checked } = event.target;
-        const { dayIndex } = event.target.dataset;
-        const { daysOfWeek } = this.state;
-        const { DAYS_OF_WEEK } = shared;
-
-        if (checked && !daysOfWeek[dayIndex]) {
-            daysOfWeek[dayIndex] = DAYS_OF_WEEK[dayIndex];
-        } else if (!checked && daysOfWeek[dayIndex]) {
-            delete daysOfWeek[dayIndex];
-        }
-        this.setState({ daysOfWeek: daysOfWeek });
+    handleChangeInputTitle = async event => {
+        const title = event.target.value;
+        this.setState({ title });
     }
 
-    handleChangeInputTimeframe = async event => {
-        const timeframeNote = event.target.value;
-        this.setState({ timeframeNote });
+    handleChangeInputAuthor = async event => {
+        const author = event.target.value;
+        this.setState({ author });
     }
 
-    handleChangeInputPriority = async event => {
-        const priority = event.target.validity.valid
-            ? event.target.value
-            : this.state.priority;
-
-        this.setState({ priority });
+    handleChangeInputPublication_year = async event => {
+        const publication_year = event.target.value;
+        this.setState({ publication_year });
     }
 
-    handleChangeInputContent = async event => {
-        const content = event.target.value;
-        this.setState({ content });
+    handleChangeInputPublisher = async event => {
+        const publisher = event.target.value;
+        this.setState({ publisher });
+    }
+
+    handleChangeInputImage_url_s = async event => {
+        const image_url_s = event.target.value;
+        this.setState({ image_url_s });
+    }
+
+    handleChangeInputImage_url_m = async event => {
+        const image_url_m = event.target.value;
+        this.setState({ image_url_m });
+    }
+
+    handleChangeInputImage_url_l = async event => {
+        const image_url_l = event.target.value;
+        this.setState({ image_url_l });
+    }
+
+    handleChangeInputCopies = async event => {
+        const copies = event.target.value;
+        this.setState({ copies });
+    }
+    
+    handleChangeInputAvailable = async event => {
+        const available = event.target.value;
+        this.setState({ available });
     }
 
     handleUpdateItem = event => {
         const {
             _id,
-            name,
-            daysOfWeek,
-            timeframeNote,
-            priority,
-            content
+            isbn,
+            title,
+            author,
+            publication_year,
+            publisher,
+            image_url_s,
+            image_url_m,
+            image_url_l,
+            copies,
+            available,
         } = this.state;
-        const item = { _id, name, daysOfWeek, timeframeNote, priority, content };
+        const item = { _id, isbn, title,author,publication_year,publisher,
+            image_url_s,image_url_m,image_url_l,copies,available, };
 
         return this.props.updateSingleItem(item)
             .then(resp => {
@@ -161,74 +184,90 @@ class ItemUpdate extends Component {
     render() {
         const {
             _id,
-            name,
-            daysOfWeek,
-            timeframeNote,
-            priority,
-            content
+            isbn,
+            title,
+            author,
+            publication_year,
+            publisher,
+            image_url_s,
+            image_url_m,
+            image_url_l,
+            copies,
+            available
         } = this.state;
-
-        const { DAYS_OF_WEEK } = shared;
 
         return _id && (
             <Wrapper>
-                <Title>Create Item</Title>
+                <Title>Update Book</Title>
 
-                <Label>Name: </Label>
+                <Label>ISBN: </Label>
                 <InputText
                     type="text"
-                    value={name}
-                    onChange={this.handleChangeInputName}
-                />
+                    value={isbn}
+                    onChange={this.handleChangeInputIsbn}
+                />  
 
-                <Fieldset>
-                    <legend>Day(s) of the Week: </legend>
-                    {Object.keys(DAYS_OF_WEEK).map((dayInt, i) => (
-                        <React.Fragment
-                            key={DAYS_OF_WEEK[dayInt]}
-                        >
-                            <DayInput
-                                type="checkbox"
-                                id={DAYS_OF_WEEK[dayInt]}
-                                className="day-checkbox-input"
-                                defaultValue={daysOfWeek[dayInt] && daysOfWeek[dayInt] !== ""}
-                                data-day-index={dayInt}
-                                onChange={this.handleChangeDays}
-                                defaultChecked={daysOfWeek[dayInt] && daysOfWeek[dayInt] !== ""}
-                            />
-                            <Label
-                                htmlFor={DAYS_OF_WEEK[dayInt]}
-                            >
-                                { DAYS_OF_WEEK[dayInt] }
-                            </Label>
-                        </React.Fragment>
-                    ))}
-                </Fieldset>
-
-                <Label>Timeframe Note: </Label>
+                <Label>Title: </Label>
                 <InputText
                     type="text"
-                    value={timeframeNote}
-                    onChange={this.handleChangeInputTimeframe}
+                    value={title}
+                    onChange={this.handleChangeInputTitle}
                 />
 
-                <Label>Priority: </Label>
+                <Label>Author: </Label>
+                <InputText
+                    type="text"
+                    value={author}
+                    onChange={this.handleChangeInputAuthor}
+                />  
+
+                <Label>Publication year: </Label>
                 <InputText
                     type="number"
-                    step="0.1"
-                    lang="en-US"
-                    min="0"
-                    max="1000"
-                    pattern="[0-9]+([,\.][0-9]+)?"
-                    value={priority}
-                    onChange={this.handleChangeInputPriority}
+                    value={publication_year}
+                    onChange={this.handleChangeInputPublication_year}
                 />
 
-                <Label>Content: </Label>
+                <Label>Publisher: </Label>
                 <InputText
-                    type="textarea"
-                    value={content}
-                    onChange={this.handleChangeInputContent}
+                    type="text"
+                    value={publisher}
+                    onChange={this.handleChangeInputPublisher}
+                />
+
+                <Label>small image url: </Label>
+                <InputText
+                    type="text"
+                    value={image_url_s}
+                    onChange={this.handleChangeInputImage_url_s}
+                />
+
+                <Label>medium image url: </Label>
+                <InputText
+                    type="text"
+                    value={image_url_m}
+                    onChange={this.handleChangeInputImage_url_m}
+                />
+
+                <Label>large image url: </Label>
+                <InputText
+                    type="text"
+                    value={image_url_l}
+                    onChange={this.handleChangeInputImage_url_l}
+                />
+
+                <Label>Copies of Book: </Label>
+                <InputText
+                    type="number"
+                    value={copies}
+                    onChange={this.handleChangeInputCopies}
+                /> 
+
+                <Label>Available: </Label>
+                <InputText
+                    type="number"
+                    value={available}
+                    onChange={this.handleChangeInputAvailable}
                 />
 
                 <Button onClick={this.confirmUpdateItem}>Update Item</Button>

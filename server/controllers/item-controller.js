@@ -117,20 +117,20 @@ createItem = (req, res) => {
                     message: 'Item created!',
                 });
         })
-        .catch(err => {
-            console.error(`[Hack.Diversity React Template] - caught error in 'createItem': ${err.errors.name}`);
-            Object.keys(err.errors).forEach(errorKey => {
-                console.error(`ERROR for: ${errorKey}`);
-                console.error(`=> ${((err.errors[errorKey] || {}).properties || {}).message}`);
-            })
-            return res
-                .status(400)
-                .json({
-                    success: false,
-                    error: err.errors,
-                    message: err.errors.name,
-                });
-        });
+        // .catch(err => {
+        //     console.error(`[Hack.Diversity React Template] - caught error in 'createItem': ${err.errors.name}`);
+        //     Object.keys(err.errors).forEach(errorKey => {
+        //         console.error(`ERROR for: ${errorKey}`);
+        //         console.error(`=> ${((err.errors[errorKey] || {}).properties || {}).message}`);
+        //     })
+        //     return res
+        //         .status(400)
+        //         .json({
+        //             success: false,
+        //             error: err.errors,
+        //             message: err.errors.name,
+        //         });
+        // });
 };
 
 updateItem = (req, res) => {
@@ -145,17 +145,22 @@ updateItem = (req, res) => {
             .status(400)
             .json({
                 success: false,
-                error: 'You must provide an item to update.',
+                message: 'You must provide an item to update.',
             });
     }
 
     const itemForUpdate = {
         _id: req.params.id,
-        name: body.name,
-        daysOfWeek: body.daysOfWeek,
-        timeframeNote: body.timeframeNote,
-        priority: body.priority,
-        content: body.content,
+        isbn: body.isbn,
+        title: body.title,
+        author: body.author,
+        publication_year: body.publication_year,
+        publisher: body.publisher,
+        image_url_s: body.image_url_s,
+        image_url_m: body.image_url_m,
+        image_url_l: body.image_url_m,
+        copies: body.copies,
+        available: body.available,
     };
 
     // console.log('----------------------- updateItem: res -----------------------');
@@ -178,7 +183,7 @@ updateItem = (req, res) => {
         // console.log(item);
         return writeOpRes;
     })
-    .then(res => {
+    .then(() => {
         // console.log('----------------------- updateItem - findOne: res -----------------------');
         // console.log(res);
         console.log(`[Hack.Diversity React Template] - 200 in 'updateItem': Item updated!`);
@@ -188,9 +193,10 @@ updateItem = (req, res) => {
                 success: true,
                 id: req.params.id,
                 message: 'Item updated!',
-                writeOpResult: res
+                //writeOpResult: res
             });
-    }).catch(err => {
+    })
+    .catch(err => {
         console.error(`[Hack.Diversity React Template] - caught error in 'updateItem': ${err}`);
         console.error(err);
         return err;
