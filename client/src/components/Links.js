@@ -35,12 +35,12 @@ const Item = styled.div.attrs({
 `;
 
 const homeStyles = {
-    marginLeft: `1em`
+    marginLeft: `0em`
 };
 
 const logoStyles = {
-    height: '40px',
-    width: '40px',
+    height: '80px',
+    width: '80px',
 };
 
 const Button = styled.button.attrs({
@@ -53,8 +53,9 @@ class Links extends Component {
     render() {
         return (
             <React.Fragment>
+                 <Logo logoStyles={logoStyles} />
                 <HomeWrapper>
-                    <Logo logoStyles={logoStyles} />
+                   
                     <Link to="/" className="navbar-brand" style={homeStyles}>
                         <Button>Home</Button>
                     </Link>
@@ -64,7 +65,7 @@ class Links extends Component {
                         <Item>
                             <Link to="/items/react-table-v6" className="nav-link">
                                 
-                                <Button>Books List (ItemTable)</Button>
+                                <Button tltte = 'submit'>Books List (ItemTable)</Button>
                             </Link>
                         </Item>
                         {/* <Item>

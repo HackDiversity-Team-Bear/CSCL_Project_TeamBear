@@ -2,6 +2,7 @@
   text-align: center;
 }
 
+/*  there was Big React logo, changed to library picture. Need to change to background picture*/
 .app--logo {
   height: 150vmin;
   pointer-events: none;
