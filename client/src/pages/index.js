@@ -1,5 +1,5 @@
 import ItemInsert from './ItemInsert';
-import ItemsList from './ItemsList';
+import ItemsList from './BooksIcons';
 import ItemsTable from './ItemsTable';
 import ItemUpdate from './ItemUpdate';
 

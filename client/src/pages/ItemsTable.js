@@ -45,6 +45,18 @@ class ItemsList extends Component {
 
         const columns = [
             {
+                Header: 'IMAGE',
+                accessor: 'image_s',
+                Cell: props => {
+                    return (
+                        <span data-item-id={props.original.image_url_s}>
+                            <img src={props.original.image_url_s}/>
+                           
+                        </span>
+                    )
+                }
+            },
+            {
                 Header: 'ISBN',
                 accessor: 'isbn',
                 filterable: true,

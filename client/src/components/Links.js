@@ -65,7 +65,8 @@ class Links extends Component {
                         <Item>
                             <Link to="/items/react-table-v6" className="nav-link">
                                 
-                                <Button tltte = 'submit'>Books List (ItemTable)</Button>
+                                <Button>Books List (ItemTable)</Button>
+
                             </Link>
                         </Item>
                         {/* <Item>
@@ -77,9 +78,7 @@ class Links extends Component {
                             </Link>
                         </Item> */}
                         <Item>
-                            <Link
-                                to="/item/create"
-                                className="nav-link">
+                            <Link to="/item/create" className="nav-link">
 
                                 <Button >Create Book ( ItemInsert)</Button>  
 
@@ -87,33 +86,31 @@ class Links extends Component {
                         </Item>
 
                         <Item>
-                            <Link
-                         to="/item/donate"
-                         className="nav-link">
+                            <Link to="/item/donate" className="nav-link">
                             
-                           <Button >DONATE A BOOK</Button> 
+                                <Button >DONATE A BOOK</Button> 
 
                             </Link>
                         </Item>
 
                         <Item>
-                            <Link
-                         to="/item/donate"
-                         className="nav-link">
+                            <Link to="/item/donate" className="nav-link">
                             
-                           <Button >RETURN A BOOK</Button> 
+                                <Button >RETURN A BOOK</Button> 
 
                             </Link>
                         </Item>
 
                         <Item>
-                            <Link
-                         to="/item/donate"
-                         className="nav-link">
+                            <Link to="/books/icons" className="nav-link" >
                             
-                           <Button >PICK A BOOK</Button> 
+                                <Button >PICK A BOOK</Button> 
 
                             </Link>
+                        </Item>
+
+                        <Item>
+                        
                         </Item>
                         
                     </List>
