@@ -14,10 +14,10 @@ const Wrapper = styled.div`
     padding: 0 40px 40px 40px;
 `;
 
-class ItemsTable extends Component {
+class DonateABook extends Component {
 
     componentDidMount() {
-        console.log("ItemsTable: props");
+        console.log("ItemsList: props");
         console.log(this.props);
         // if (((this.props.itemData || {}).items || []).length) return;
 
@@ -92,30 +92,7 @@ class ItemsTable extends Component {
                     );
                 }
             },
-            {
-                Header: 'Year_Of_Publication',
-                accessor: 'publication_year',
-                filterable: true,
-                Cell: props => {
-                    return (
-                        <span data-name={props.original.publication_year}>
-                            {props.value}
-                        </span>
-                    );
-                }
-            },
-            {
-                Header: 'Number of Copies',
-                accessor: 'copies',
-                filterable: true,
-                Cell: props => {
-                    return (
-                        <span data-name={props.original.copies}>
-                            {props.value}
-                        </span>
-                    );
-                }
-            },
+            
             {
                 Header: '',
                 accessor: '',
@@ -139,26 +116,13 @@ class ItemsTable extends Component {
                             data-update-id={props.original._id}
                             to={`/item/update/${props.original._id}`}
                         >
-                            Update Book
+                            Add this Book
                             {/* /client/src/pages/ItemUpdate.js */}
                         </Link>
                     );
                 },
             },
-            {
-                Header: '',
-                accessor: '',
-                Cell: props => {
-                    return (
-                        <span data-delete-id={props.original._id}>
-                            <DeleteButton
-                                id={props.original._id}
-                                onDelete={this.handleRemoveItem}
-                            />
-                        </span>
-                    );
-                },
-            },
+            
         ];
 
         return (
@@ -191,4 +155,4 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemsTable);
+export default connect(mapStateToProps, mapDispatchToProps)(DonateABook);

@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ReactTable from 'react-table-6';
 import * as actions from '../actions';
-import { DeleteButton } from '../components/buttons';
 
 import styled from 'styled-components';
 
@@ -14,10 +13,10 @@ const Wrapper = styled.div`
     padding: 0 40px 40px 40px;
 `;
 
-class ItemsTable extends Component {
+class PickABook extends Component {
 
     componentDidMount() {
-        console.log("ItemsTable: props");
+        console.log("PickABook: props");
         console.log(this.props);
         // if (((this.props.itemData || {}).items || []).length) return;
 
@@ -117,48 +116,48 @@ class ItemsTable extends Component {
                 }
             },
             {
-                Header: '',
-                accessor: '',
-                Cell: props => {
-                    return (
-                        <Link to="/item/create">
+                    Header: '',
+                    accessor: '',
+                    Cell: props => {
+                        return (
+                            <Link to="/item/create">
+    
+                              PICK
+                               {/* /client/src/pages/ItemInsert.js */}
+    
+                            </Link>
+                        );
+                    },
+                },
+            // {
+            //     Header: '',
+            //     accessor: '',
+            //     Cell: props => {
+            //         return (
+            //             <Link to="/item/create">
 
-                           Create Book
-                           {/* /client/src/pages/ItemInsert.js */}
+            //                Create Book
+            //                {/* /client/src/pages/ItemInsert.js */}
 
-                        </Link>
-                    );
-                },
-            },
-            {
-                Header: '',
-                accessor: '',
-                Cell: props => {
-                    return (
-                        <Link
-                            data-update-id={props.original._id}
-                            to={`/item/update/${props.original._id}`}
-                        >
-                            Update Book
-                            {/* /client/src/pages/ItemUpdate.js */}
-                        </Link>
-                    );
-                },
-            },
-            {
-                Header: '',
-                accessor: '',
-                Cell: props => {
-                    return (
-                        <span data-delete-id={props.original._id}>
-                            <DeleteButton
-                                id={props.original._id}
-                                onDelete={this.handleRemoveItem}
-                            />
-                        </span>
-                    );
-                },
-            },
+            //             </Link>
+            //         );
+            //     },
+            // },
+            // {
+            //     Header: '',
+            //     accessor: '',
+            //     Cell: props => {
+            //         return (
+            //             <Link
+            //                 data-update-id={props.original._id}
+            //                 to={`/item/update/${props.original._id}`}
+            //             >
+            //                 Update Book
+            //                 {/* /client/src/pages/ItemUpdate.js */}
+            //             </Link>
+            //         );
+            //     },
+            // },
         ];
 
         return (
@@ -191,4 +190,4 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemsTable);
+export default connect(mapStateToProps, mapDispatchToProps)(PickABook);

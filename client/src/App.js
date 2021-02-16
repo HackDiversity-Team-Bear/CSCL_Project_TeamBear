@@ -23,7 +23,10 @@ import {
     ItemInsert,
     ItemsList,
     ItemsTable,
-    ItemUpdate
+    ItemUpdate,
+    DonateABook,
+    PickABook,
+    ReturnABook
 } from './pages';
 
 class App extends Component {
@@ -37,6 +40,12 @@ class App extends Component {
                 <Route exact path={routes.ITEM_INSERT} component={ItemInsert} />
                 <Route exact path={routes.ITEM_UPDATE} component={ItemUpdate} />
                 <Route exact path={routes.BOOK_ICONS} component={ItemsList} />
+
+
+                <Route exact path={routes.DONATEABOOK} component={DonateABook} />
+                <Route exact path={routes.PICKABOOK} component={PickABook} />
+                <Route exact path={routes.RETURNABOOK} component={ReturnABook} />
+
             </Switch>
         );
 

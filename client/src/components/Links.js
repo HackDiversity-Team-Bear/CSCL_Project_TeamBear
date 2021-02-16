@@ -80,7 +80,7 @@ class Links extends Component {
                         </Item> */}
 
                         <Item>
-                            <Link to="/item/donate" className="nav-link">
+                            <Link to="/donate" className="nav-link">
                             
                                 <Button >DONATE A BOOK</Button> 
 
@@ -88,7 +88,7 @@ class Links extends Component {
                         </Item>
 
                         <Item>
-                            <Link to="/item/donate" className="nav-link">
+                            <Link to="/return" className="nav-link">
                             
                                 <Button >RETURN A BOOK</Button> 
 
@@ -96,7 +96,7 @@ class Links extends Component {
                         </Item>
 
                         <Item>
-                            <Link to="/books/icons" className="nav-link" >
+                            <Link to="/pick" className="nav-link" >
                             
                                 <Button >PICK A BOOK</Button> 
 
