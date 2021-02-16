@@ -121,11 +121,11 @@ class ItemsList extends Component {
                 accessor: '',
                 Cell: props => {
                     return (
-                        <Link
-                            data-update-id={props.original._id}
-                            to={`/item/update/${props.original._id}`}
-                        >
-                            Show Book
+                        <Link to="/item/create">
+
+                           Create Book
+                           {/* /client/src/pages/ItemInsert.js */}
+
                         </Link>
                     );
                 },
@@ -139,7 +139,8 @@ class ItemsList extends Component {
                             data-update-id={props.original._id}
                             to={`/item/update/${props.original._id}`}
                         >
-                            Update Item
+                            Update Book
+                            {/* /client/src/pages/ItemUpdate.js */}
                         </Link>
                     );
                 },

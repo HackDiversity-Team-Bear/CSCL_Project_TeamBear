@@ -62,13 +62,7 @@ class Links extends Component {
                 </HomeWrapper>
                 <Collapse>
                     <List>
-                        <Item>
-                            <Link to="/items/react-table-v6" className="nav-link">
-                                
-                                <Button>Books List (ItemTable)</Button>
-
-                            </Link>
-                        </Item>
+                        
                         {/* <Item>
                             <Link
                                 to="/items"
@@ -77,13 +71,13 @@ class Links extends Component {
                                 Items
                             </Link>
                         </Item> */}
-                        <Item>
+                        {/* <Item>
                             <Link to="/item/create" className="nav-link">
 
                                 <Button >Create Book ( ItemInsert)</Button>  
 
                             </Link>
-                        </Item>
+                        </Item> */}
 
                         <Item>
                             <Link to="/item/donate" className="nav-link">
@@ -109,16 +103,26 @@ class Links extends Component {
                             </Link>
                         </Item>
 
-                        <Item>
-                            <Link to="/admin" className="nav-link" >
-                            
-                            <Button align="rigth" >ADMIN</Button> 
 
-                            </Link>
-                        </Item>
+                       
+
+
+
+
                         
                     </List>
                 </Collapse>
+
+
+                        <Item>
+                            <Link to="/items/react-table-v6" className="nav-link">
+                                
+                                <Button >ADMIN</Button>
+
+                            </Link>
+                        </Item>
+
+
             </React.Fragment>
         );
     }
