@@ -110,7 +110,11 @@ class Links extends Component {
                         </Item>
 
                         <Item>
-                        
+                            <Link to="/admin" className="nav-link" >
+                            
+                            <Button align="rigth" >ADMIN</Button> 
+
+                            </Link>
                         </Item>
                         
                     </List>
