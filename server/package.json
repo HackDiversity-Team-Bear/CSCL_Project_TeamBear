@@ -4,11 +4,12 @@
     "description": "",
     "main": "index.js",
     "engines": {
-        "node": ">=10.14.2",
+        "node": ">=12.20.1",
         "npm": ">=6.4.1",
         "yarn": ">=1.22.5"
     },
     "scripts": {
+        "start": "node index.js",
         "debugServer": "npx nodemon inspect index.js",
         "server": "npx nodemon index.js",
         "test": "echo \"Error: no test specified\" && exit 1"
