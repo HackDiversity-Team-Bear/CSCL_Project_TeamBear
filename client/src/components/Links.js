@@ -35,94 +35,53 @@ const Item = styled.div.attrs({
 `;
 
 const homeStyles = {
-    marginLeft: `0em`
+    marginLeft: `1em`
 };
 
 const logoStyles = {
-    height: '80px',
-    width: '80px',
+    height: '40px',
+    width: '40px',
 };
-
-const Button = styled.button.attrs({
-    className: `btn btn-primary`,
-})`
-    margin: 15px 15px 15px 5px;
-`;
 
 class Links extends Component {
     render() {
         return (
             <React.Fragment>
-                 <Logo logoStyles={logoStyles} />
                 <HomeWrapper>
-                   
-                    <Link to="/" className="navbar-brand" style={homeStyles}>
-                        <Button>Home</Button>
+                    <Logo logoStyles={logoStyles} />
+                    <Link
+                        to="/"
+                        className="navbar-brand"
+                        style={homeStyles}
+                    >
+                        Home
                     </Link>
                 </HomeWrapper>
                 <Collapse>
                     <List>
-                        
-                        {/* <Item>
+                        <Item>
                             <Link
                                 to="/items"
                                 className="nav-link"
                             >
                                 Items
                             </Link>
-                        </Item> */}
-                        {/* <Item>
-                            <Link to="/item/create" className="nav-link">
-
-                                <Button >Create Book ( ItemInsert)</Button>  
-
-                            </Link>
-                        </Item> */}
-
+                        </Item>
                         <Item>
-                            <Link to="/donate" className="nav-link">
-                            
-                                <Button >DONATE A BOOK</Button> 
-
+                            <Link
+                                to="/item/create"
+                                className="nav-link"
+                            >
+                                Create Item
                             </Link>
                         </Item>
-
-                        <Item>
-                            <Link to="/return" className="nav-link">
-                            
-                                <Button >RETURN A BOOK</Button> 
-
-                            </Link>
-                        </Item>
-
-                        <Item>
-                            <Link to="/pick" className="nav-link" >
-                            
-                                <Button >PICK A BOOK</Button> 
-
-                            </Link>
-                        </Item>
-
-
-                       
-
-
-
-
-                        
-                    </List>
-                </Collapse>
-
-
                         <Item>
                             <Link to="/items/react-table-v6" className="nav-link">
-                                
-                                <Button >ADMIN</Button>
-
+                                Items (react-table-v6)
                             </Link>
                         </Item>
-
-
+                    </List>
+                </Collapse>
             </React.Fragment>
         );
     }

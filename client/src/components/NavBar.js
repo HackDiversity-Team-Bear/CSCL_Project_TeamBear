@@ -14,12 +14,11 @@ const Container = styled.div.attrs({
 const Nav = styled.nav.attrs({
     className: 'navbar navbar-expand-lg navbar-dark bg-dark',
 })`
-max-width: 100%;
-padding-left: 20px;
-padding-right: 0px;
-color: 'red';
+    margin-bottom: 20px;
 
-    
+    @media screen and (min-width: 992px) {
+        padding: 0.5em 25%;
+    }
 `;
 
 class NavBar extends Component {

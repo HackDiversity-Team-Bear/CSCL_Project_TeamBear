@@ -14,10 +14,10 @@ const Wrapper = styled.div`
     padding: 0 40px 40px 40px;
 `;
 
-class ItemsTable extends Component {
+class ItemsList extends Component {
 
     componentDidMount() {
-        console.log("ItemsTable: props");
+        console.log("ItemsList: props");
         console.log(this.props);
         // if (((this.props.itemData || {}).items || []).length) return;
 
@@ -45,88 +45,72 @@ class ItemsTable extends Component {
 
         const columns = [
             {
-                Header: 'IMAGE',
-                accessor: 'image_s',
+                Header: 'ID',
+                accessor: '_id',
+                filterable: true,
                 Cell: props => {
                     return (
-                        <span data-item-id={props.original.image_url_s}>
-                            <img src={props.original.image_url_s}/>
-                           
+                        <span data-item-id={props.original._id}>
+                            {props.original._id}
                         </span>
                     )
                 }
             },
             {
-                Header: 'ISBN',
-                accessor: 'isbn',
+                Header: 'Name',
+                accessor: 'name',
                 filterable: true,
                 Cell: props => {
                     return (
-                        <span data-item-id={props.original.isbn}>
-                            {props.original.isbn}
-                        </span>
-                    )
-                }
-            },
-            {
-                Header: 'TITLE',
-                accessor: 'title',
-                filterable: true,
-                Cell: props => {
-                    return (
-                        <span data-name={props.original.title}>
+                        <span data-name={props.original.name}>
                             {props.value}
                         </span>
                     );
                 }
             },
             {
-                Header: 'AUTHOR',
-                accessor: 'author',
+                Header: 'Day(s)',
+                accessor: 'daysOfWeek',
                 filterable: true,
                 Cell: props => {
-                    return (
-                        <span data-name={props.original.author}>
-                            {props.value}
-                        </span>
-                    );
-                }
-            },
-            {
-                Header: 'Year_Of_Publication',
-                accessor: 'publication_year',
-                filterable: true,
-                Cell: props => {
-                    return (
-                        <span data-name={props.original.publication_year}>
-                            {props.value}
-                        </span>
-                    );
-                }
-            },
-            {
-                Header: 'Number of Copies',
-                accessor: 'copies',
-                filterable: true,
-                Cell: props => {
-                    return (
-                        <span data-name={props.original.copies}>
-                            {props.value}
-                        </span>
-                    );
-                }
-            },
-            {
-                Header: '',
-                accessor: '',
-                Cell: props => {
-                    return (
-                        <Link to="/item/create">
+                    const { daysOfWeek } = props.original;
+                    let daysToDisplay = "";
+                    if (daysOfWeek && typeof daysOfWeek === "object") {
+                        for (const day in daysOfWeek) {
+                            daysToDisplay = daysToDisplay === "" ? daysOfWeek[day] : `${daysToDisplay}, ${daysOfWeek[day]}`;
+                        }
 
-                           Create Book
-                           {/* /client/src/pages/ItemInsert.js */}
-
-                        </Link>
+                    }
+                    return (
+                        <span
+                            data-daysofweek={daysOfWeek && JSON.stringify(daysOfWeek)}
+                            data-daysofweek-by-id={props.original._id}
+                        >
+                            {daysToDisplay || "-"}
+                        </span>
+                    );
+                }
+            },
+            {
+                Header: 'Timeframe',
+                accessor: 'timeframeNote',
+                Cell: props => {
+                    return (
+                        <span data-timeframe={props.original.timeframeNote}>
+                            {props.value || "-"}
+                        </span>
+                    );
+                },
+            },
+            {
+                Header: 'Priority',
+                accessor: 'priority',
+                filterable: true,
+                Cell: props => {
+                    return (
+                        <span data-priority={props.original.priority}>
+                            {props.value}
+                        </span>
                     );
                 },
             },
@@ -139,8 +123,7 @@ class ItemsTable extends Component {
                             data-update-id={props.original._id}
                             to={`/item/update/${props.original._id}`}
                         >
-                            Update Book
-                            {/* /client/src/pages/ItemUpdate.js */}
+                            Update Item
                         </Link>
                     );
                 },
@@ -191,4 +174,4 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemsTable);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemsList);

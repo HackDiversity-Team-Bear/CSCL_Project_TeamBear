@@ -2,17 +2,16 @@
   text-align: center;
 }
 
-/*  there was Big React logo, changed to library picture. Need to change to background picture*/
 .app--logo {
-  height: 150vmin;
+  height: 40vmin;
   pointer-events: none;
 }
 
-/* @media (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
   .app--logo {
     animation: app--logo-spin infinite 20s linear;
   }
-} */
+}
 
 .app--header {
   background-color: #282c34;
@@ -25,14 +24,14 @@
   color: white;
 }
 
-/* @keyframes app--logo-spin {
+@keyframes app--logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-} */
+}
 
 .view-container {
     overflow: auto;
